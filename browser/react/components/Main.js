@@ -18,14 +18,6 @@ export default class Main extends Component {
     this.deselectAlbum = this.deselectAlbum.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('/api/albums/')
-      .then(res => res.data)
-      .then(albums => {
-        this.setState({ albums })
-      });
-  }
-
   selectAlbum(albumId) {
     axios.get(`/api/albums/${albumId}`)
       .then(res => res.data)
