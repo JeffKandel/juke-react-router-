@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Songs from '../components/Songs';
+import axios from 'axios';
 
 const fakeAlbum = {
   name: 'Yellow Submarine',
@@ -17,10 +18,24 @@ const fakeAlbum = {
 }
 
 export default class SingleAlbum extends Component {
-
+  constructor () {
+    super();
+    this.state = {
+      album: {}
+    };
+  }
+  componentDidMount () {
+    axios.get('/api/albums/' + this.props.match.params.albumId)
+      .then(albumRes => {
+        console.log('album fetched: ' + albumRes);
+        return albumRes.data
+      }).then(album => {
+        this.setState({album})
+      });
+  }
   render() {
     console.log("params", this.props.match.params)
-    const album = fakeAlbum;
+    const album = this.state.album;
 
     return (
       <div className="album">
