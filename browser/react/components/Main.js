@@ -11,7 +11,6 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      albums: [],
       selectedAlbum: {}
     };
     this.selectAlbum = this.selectAlbum.bind(this);
@@ -40,6 +39,7 @@ export default class Main extends Component {
           <div className="col-xs-10">
             <Route exact path="/" component={AllAlbums} />
             <Route exact path="/albums" component={AllAlbums} />
+            <Route path="/albums/:albumId" component={SingleAlbum} />
           </div>
         </HashRouter>
         <Player />
@@ -47,9 +47,3 @@ export default class Main extends Component {
     );
   }
 }
-
-// {
-//   this.state.selectedAlbum.id ?
-//   <SingleAlbum album={this.state.selectedAlbum} /> :
-//   <AllAlbums albums={this.state.albums} selectAlbum={this.selectAlbum} />
-// }
