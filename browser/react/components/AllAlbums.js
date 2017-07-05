@@ -57,7 +57,7 @@ const fakeAlbums = [
 export default class AllAlbums extends Component {
 
   render () {
-    const albums = this.props.albums;
+    const albums = fakeAlbums;
     const selectAlbum = this.props.selectAlbum;
 
     return (
